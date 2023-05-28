@@ -1,0 +1,22 @@
+.table-responsive {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* sidebar design */
+.list-group-item.active {
+    background-color: #212529;
+    color: #fff;
+  }
+
+  /* Remove sorting arrows */
+table.dataTable thead .sorting::before,
+table.dataTable thead .sorting_asc::before,
+table.dataTable thead .sorting_desc::before {
+    display: none !important;
+}
+
+/* Remove arrow down icon */
+table.dataTable thead .sorting_desc:before {
+    display: none !important;
+}

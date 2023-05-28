@@ -1,0 +1,317 @@
+html{
+  scroll-behavior: smooth;
+}
+body{
+  background-color: #f5f5fd;
+  color: #201D24;
+}
+
+  .hov {
+    transition: transform .2s;
+  }
+  
+  .hov:hover {
+    transform: scale(1.1);
+  }
+  .wemake{
+    color: rgb(6, 189, 189);
+  }
+  .mySlides {
+    display:none;
+    transition: opacity .5s ease-in-out;
+  }
+  .bounce {
+  animation-name: bounce;
+  animation-duration: 0.5s;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+ /* Style The Dropdown Button */
+ .dropbtn {
+  background-color:pink;
+  color: white;
+  padding: 20px;
+  padding-top: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 1px;
+  }
+  .btndrop{
+      padding: 2px;
+      background-color:white ;
+      font-size: 16px;
+      border: none;
+  }
+
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+  position: relative;
+  display: inline-block;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 70px;
+  box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.6);
+  z-index: 1;
+  border-radius: 10px;
+  font-style: italic;
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+  color: black;
+  padding: 2px 5px;
+  text-decoration:none;
+  display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #D2ECEF}
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+  display: block;
+  }
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+  background-color: #D2ECEF;
+  }
+  .designsatable{
+      background-color: #F9F7F2;
+      box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+  }
+  .hoverni:hover{
+      border-color: pink;
+      color: var(--white);
+      background-color: #D2ECEF;
+      }
+
+    thead{
+      color: rgb(92, 92, 92);
+      font-weight: bold;
+    }
+    tr{
+      color:rgb(92, 92, 92) ;
+      font-size: 15px;
+    }
+    .tables-color{
+      background-color: white;
+    }
+    .sidebar-color{
+      background-color: #f5f5f5;
+      color: gray;
+    }
+    .navbar-color{
+      background-color: #f5f5f5;
+      color: gray;
+    }
+    .li-hover:hover{
+      background-color:  #D2ECEF ;
+    }
+
+/* hover ni sa button sa submit form sa user */
+   .buttons:hover{
+      background-color: black;
+      border-color: #fff;
+      color:#fff
+   }
+/* Custom styles for the carousel */
+.carousel-item {
+  height: 95vh;
+}
+.carousel-item img {
+  object-fit: cover;
+  height: 100%;
+  filter: brightness(70%);
+}
+.carousel-caption {
+  bottom: 15%;
+}
+.carousel-caption h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px #000000;
+}
+.carousel-caption p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px #000000;
+} 
+/* Custom styles for the testimonials section */
+.testimonials {
+  background-color: #f5f5fd;
+  color: #000000;
+  padding: 50px 0;
+}
+.testimonial {
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.testimonial img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.testimonial h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.testimonial p {
+  font-size: 1.2rem;
+}
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form h2 {
+  color: #343a40;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.feedback-form label {
+  color: #343a40;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  border-radius: 5px;
+  border: none;
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.feedback-form button:hover {
+  background-color: #0062cc;
+}
+.gallery{
+  display: flex;
+  height: 20rem;
+  gap: 1rem;
+}
+.gallery > div{
+  flex: 1;
+  border-radius: 1rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  transition: all .8s cubic-bezier(.25, .4, .45, 1.4);
+}
+.gallery > div:hover{
+  flex: 5;
+}
+
+.type{
+  position: relative;
+  color: #f5f5fd;
+}
+.type:before{
+  content: "Delicious food and drinks are coming for you";
+  position : absolute;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  color: rgb(3, 3, 3);
+  border-right: 8px solid rgb(0, 0, 0);
+  transition: 1s ease-in-out;
+}
+.type:hover:before{
+  width: 100%;
+  filter: drop-shadow(0 0 25px lightb);
+}
+.type1{
+  position: relative;
+  color: #000000;
+}
+.type1:before{
+  content: "Delicious food and drinks are coming for you";
+  position : absolute;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  border-right: 8px solid rgb(255, 255, 255);
+  transition: 1s ease-in-out;
+}
+.type1:hover:before{
+  width: 100%;
+  filter: drop-shadow(0 0 25px lightb);
+}
+.type2{
+  position: relative;
+  color: #000000;
+}
+.type2:before{
+  content: "Experience the best culinary delights";
+  position : absolute;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  border-right: 8px solid rgb(255, 255, 255);
+  transition: 1s ease-in-out;
+}
+.type2:hover:before{
+  width: 100%;
+  filter: drop-shadow(0 0 25px lightb);
+}
+.type3{
+  position: relative;
+  color: #000000;
+}
+.type3:before{
+  content: "Come and try our amazing selection";
+  position : absolute;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  border-right: 8px solid rgb(255, 255, 255);
+  transition: 1s ease-in-out;
+}
+.type3:hover:before{
+  width: 100%;
+  filter: drop-shadow(0 0 25px lightb);
+}
