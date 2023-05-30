@@ -2,6 +2,7 @@
     session_start();
     include('connection.php');
     $haslog = (isset($_SESSION['hasLog'])?$_SESSION['hasLog']:0);
+    $loggedInUserRole = $_SESSION['Role'];
 
     if (empty($haslog)){
         header("location: index.php");
@@ -40,11 +41,11 @@
                                                 <i class="bi bi-house text-dark"></i>
                                             </a>
                                         </p>
-                                        
+                                        <?php if ($loggedInUserRole === 'Admin'): ?>
                                         <button style="background-color:lightgreen;color:green;flex-wrap: wrap; float:right; margin-right:6%; margin-top:-3%" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#reservationModal">
                                             <i class="bi bi-plus"></i> Add
                                         </button>
-                                        
+                                        <?php endif; ?>
                                         <!--  *******************************************Add reservation Modal*********************************** -->
                                         <div class="modal fade" id="reservationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -187,8 +188,10 @@
                                                                         <button class="dropbtn"><i class="bi bi-chevron-compact-down text-dark"></i></button>
                                                                         <div class="dropdown-content">
                                                                             <a style="color:blue" href="#" data-bs-toggle="modal" data-bs-target="#viewmodal<?= $result['id'] ?>">View</i></a>
-                                                                            <a style="color:green" href = "reservationedit.php?id=<?= $result['id'] ?>">Edit</a>
-                                                                            <a style="color:red" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $result['id'] ?>">Delete</a>
+                                                                            <?php if ($loggedInUserRole === 'Admin'): ?>
+                                                                                <a style="color:green" href="reservationedit.php?id=<?= $result['id'] ?>">Edit</a>
+                                                                                <a style="color:red" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $result['id'] ?>">Delete</a>
+                                                                            <?php endif; ?>
                                                                         </div>
                                                                     </div>
                                                                 </td>

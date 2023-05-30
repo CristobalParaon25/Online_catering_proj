@@ -41,6 +41,13 @@
                                                     <label for="password" class="form-label">Password</label>
                                                     <input type="password" name="Password" class="form-control" id="password" required>
                                                 </div>
+                                                <div class="col-md-12">
+                                                    <label for="role" class="form-label">Role</label>
+                                                    <select class="form-control" name="Role" id="role">
+                                                        <option value="Admin">Admin</option>
+                                                        <option value="Member">Member</option>
+                                                    </select>
+                                                </div>
                                                 <div class="col-md-12 mt-3">
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">

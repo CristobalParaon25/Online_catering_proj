@@ -5,8 +5,9 @@
 
         $UserName = $_POST['UserName'];
         $Password = $_POST['Password'];
+        $Role = $_POST['Role'];
 
-        $sql = "INSERT INTO users (UserName, Password) VALUES ('$UserName','$Password' )";
+        $sql = "INSERT INTO users (UserName, Password, Role) VALUES ('$UserName','$Password','$Role' )";
 
         if ($conn->query($sql) === TRUE){
             header("Location:settings.php?status=success");

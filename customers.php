@@ -2,6 +2,7 @@
     session_start();
     include('connection.php');
     $haslog = (isset($_SESSION['hasLog'])?$_SESSION['hasLog']:0);
+    $loggedInUserRole = $_SESSION['Role'];
 
     if (empty($haslog)){
         header("location: index.php");
@@ -92,6 +93,7 @@
                                             </tbody>
                                         </table>
 
+                                        <?php if ($loggedInUserRole === 'Admin'): ?>
                                         <script>
                                             function updateStatus(reservationId, cell) {
                                                 // Display confirmation dialog using SweetAlert
@@ -129,6 +131,7 @@
                                                 });
                                             }
                                             </script>
+                                            <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>

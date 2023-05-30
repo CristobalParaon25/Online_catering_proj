@@ -2,6 +2,7 @@
     session_start();
     include('connection.php');
     $haslog = (isset($_SESSION['hasLog'])?$_SESSION['hasLog']:0);
+    $loggedInUserRole = $_SESSION['Role'];
 
     if (empty($haslog)){
         header("location: index.php");
@@ -78,8 +79,10 @@
                                                                     <button class="dropbtn"><i class="bi bi-chevron-compact-down text-dark"></i></button>
                                                                     <div class="dropdown-content">
                                                                         <a class="text-success" href="#" data-bs-toggle="modal" data-bs-target="#viewmodal<?= $result['id'] ?>">View</i></a>
-                                                                        <a class="text-primary" href = "onlinereservationedit.php?id=<?= $result['id'] ?>">edit</a>
-                                                                        <a class="text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $result['id'] ?>">decline</a>
+                                                                        <?php if ($loggedInUserRole === 'Admin'): ?>
+                                                                            <a class="text-primary" href = "onlinereservationedit.php?id=<?= $result['id'] ?>">edit</a>
+                                                                            <a class="text-danger" href="#" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $result['id'] ?>">decline</a>
+                                                                        <?php endif; ?>
                                                                     </div>
                                                                 </div>
                                                             </td>

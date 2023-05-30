@@ -1,3 +1,6 @@
+<?php
+$loggedInUserRole = $_SESSION['Role'];
+?>
 <nav class="navbar navbar-expand-lg  p-3 mb-4 rounded navbar-color">
     <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
             class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list"></i>
@@ -27,6 +30,7 @@
                         </span>Logout
                       </a>
                     </li>
+                    <?php if ($loggedInUserRole === 'Admin'): ?>
                     <li>
                     <a class="dropdown-item text-dark" href="settings.php">
                         <span>
@@ -37,6 +41,7 @@
                       </span>Settings
                     </a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </li>
             <!-- Logout Modal -->

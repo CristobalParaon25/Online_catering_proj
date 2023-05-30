@@ -1,3 +1,6 @@
+<?php
+   $loggedInUserRole = $_SESSION['Role'];
+?>
 <div style="background-color: #343a40;" class="col-auto px-0 sidebar-color">
     <div id="sidebar" class="collapse collapse-horizontal show border-end vh-100">
         <div id="sidebar-nav" class="list-group border-0 rounded-0">
@@ -53,6 +56,7 @@
                     </span> 
                     <a href="inbox.php" style="color: <?php echo basename($_SERVER['PHP_SELF']) == 'inbox.php' ? '#343a40' : 'aliceblue'; ?>" class="text-decoration-none <?php if (basename($_SERVER['PHP_SELF']) == 'inbox.php') echo 'fw-bold'; ?>">Feedbacks</a>
                 </li>
+                <?php if ($loggedInUserRole === 'Admin'): ?>
                 <li style="background-color: <?php echo basename($_SERVER['PHP_SELF']) == 'bin.php' ? 'aliceblue' : '#343a40'; ?>" class="list-group-item sidebar-color border-0 li-hover">
                 <span>
                     <svg style="width: 25px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -61,6 +65,7 @@
                     </span> 
                     <a href="bin.php" style="color: <?php echo basename($_SERVER['PHP_SELF']) == 'bin.php' ? '#343a40' : 'aliceblue'; ?>" class="text-decoration-none <?php if (basename($_SERVER['PHP_SELF']) == 'bin.php') echo 'fw-bold'; ?>">Bin</a>
                 </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

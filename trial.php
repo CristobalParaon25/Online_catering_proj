@@ -1,105 +1,158 @@
-<?php
-    session_start();
-    include('connection.php');
-    $haslog = (isset($_SESSION['hasLog'])?$_SESSION['hasLog']:0);
-
-    if (empty($haslog)){
-        header("location: index.php");
-        exit;
-    }
-    // if (isset($_GET['deleted'])) {
-    //     echo "<script>alert('Reservation deleted successfully.');</script>";
-    //  }
-?>
 <!DOCTYPE html>
-<?php 
-    include("header.php")
-?>
-<link rel="stylesheet" href="admin.css">
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Snpmpc login</title>
+  <!-- Link to Bootstrap CSS file -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <style>
+.gradient-custom-2 {
+/* fallback for old browsers */
+background: #343a40;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, #343a40, #343a40, #343a40, #343a40);
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, #343a40, #343a40, #343a40, #343a40);
+}
+
+@media (min-width: 768px) {
+.gradient-form {
+height: 100vh !important;
+}
+}
+@media (min-width: 769px) {
+.gradient-custom-2 {
+border-top-right-radius: .3rem;
+border-bottom-right-radius: .3rem;
+}
+}
+
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
+</head>
+
+<body>
+<section class="h-100 gradient-form" style="background-color: #f5f5fd;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-1 shadow text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                  <p class="mt-1 mb-5 pb-1">CATERING ONLINE RESERVATION SYSTEM</p>
+                </div>
+
+                <form action="#">
+				  <div class="form-outline mb-2">
+				  <label class="form-label" style="font-size: 10px; font-weight:bold; color:gray" for="form2Example22">ROLE</label>
+                    <select class="form-control form-control-sm" name="role" id="role">
+						<option value="">Select Role</option>
+						<option value="Admin">Admin</option>
+						<option value="Member">Member</option>
+					</select>
+                  </div>
+                  <div class="form-outline mb-2">
+				  	<label class="form-label" style="font-size: 10px; font-weight:bold; color:gray" for="form2Example22">USERNAME</label>
+                    <input type="text" id="username" name="username" class="form-control form-control-sm"/>
+                  </div>
+
+                  <div class="form-outline mb-2">
+				  <label class="form-label" style="font-size: 10px; font-weight:bold; color:gray" for="form2Example22">PASSWORD</label>
+                    <input type="password" id="password" class="form-control form-control-sm" />
+                  </div>
+
+				<div class="text-center mb-1">
+					<button id="btnLogin" value="Login" class="btn btn-danger btn-block fa-lg" type="button" style="border-radius: 2px; padding:3px;padding-right: 1rem;padding-left: 1rem; font-size:12px">Log
+					in</button>
+				</div>
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">SNPMPC</h4>
+                <p class="small mb-0">Santo Nino Plaridel Parish Multipurpose Cooperative.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+     <!-- Link to Bootstrap JavaScript file -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+</html>
+
+ 
+<script type="text/javascript">
+    $("#btnLogin").click(function(){
+        var uname = $("#username").val();
+        var pword = $("#password").val();
+        var role = $("#role").val();
+
+        if (role == "") {
+            swal({
+                title: "Error",
+                text: "Please select a role!",
+                icon: "error",
+                button: "OK",
+            });
+            return false;
+        }
+
+        if (uname == "") {
+            swal({
+                title: "Error",
+                text: "Empty Username!",
+                icon: "error",
+                button: "OK",
+            });
+            return false;
+        }
+
+        if (pword == "") {
+            swal({
+                title: "Error",
+                text: "Empty Password!",
+                icon: "error",
+                button: "OK",
+            });
+            return false;
+        }
+
+        $.ajax({
+            url:"processLogin.php",
+            method: "post",
+            data: { "username": uname, "password": pword, "role": role },
+            success: function(res) {
+                if (res == "1") {
+                    window.location = "admin.php";
+                } else {
+                    swal({
+                        title: "Error",
+                        text: "Incorrect username or password!",
+                        icon: "error",
+                        button: "OK",
+                    });
+                }
+            }
+        });
+    });
+</script>
 
     
-
-    <body>
-        <div class="container-fluid">
-            <div class="row flex-nowrap">
-                <?php 
-                    include("sidebar.php")
-                ?>
-                <div class="col ps-md-2 pt-2">
-                    <?php 
-                        include("navbar.php")
-                    ?> 
-                    <section>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card border-0 shadow tables-color">
-                                    <div class="card-header border-0 tables-color">
-                                      <div class="row">
-                                          <div class="col-md-12 col-md-offset-1">
-                                              <h3>Members Table
-                                                  <button type="button" data-bs-toggle="modal" data-bs-target="#addnew" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> </button>
-                                              </h3>
-                                          </div>
-                                      </div>            
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="card-body card-dashboard">
-                                            <div class="table-responsive">
-                                                <table class="table table-sm" id="myTable" width="100%" cellspacing="0" data-bs-toggle="table" data-bs-search="true" data-bs-show-search-clear-button="true">
-                                                  <thead>
-                                                      <th>Fisrtname</th>
-                                                      <th>Lastname</th>
-                                                      <th>Action</th>
-                                                  </thead>
-                                                  <tbody>
-                                                      @foreach($members as $member)
-                                                          <tr>
-                                                              <td>{{$member->firstname}}</td>
-                                                              <td>{{$member->lastname}}</td>
-                                                              <td>
-                                                                  <span type = "button" href="#edit{{$member->id}}" data-bs-toggle="modal" class = "text-success"><i class='fa fa-edit'></i> </span>
-                                                                  <span type = "button" href="#delete{{$member->id}}" data-bs-toggle="modal" class = "text-danger" ><i class='fa fa-trash red'></i> </span>
-                                                                  @include('action')
-                                                                  @include('modal')
-                                                              </td>
-                                                          </tr>
-                                                      @endforeach
-                                                  </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-    </body>
-    <!-- Sweet Alert scripts -->
-<script src="js/sweetalert2.all.min.js"></script>
-  <script src="js/sweetalert.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- DataTables JS -->
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-<script>
-   $(document).ready(function() {
-  $('#myTable').DataTable({
-    "bPaginate": false,
-    "bLengthChange": false,
-    "bFilter": true,
-    "bInfo": false,
-    "bAutoWidth": false,
-    "orderClasses": false,
-  });
-});
-
-</script>
-</html>
